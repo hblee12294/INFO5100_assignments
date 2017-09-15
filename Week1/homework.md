@@ -1,29 +1,30 @@
 
 # Homework
 
+***
 ## 1. Hiking
 ### 1.1 Rent a ReachNow to drive to mountain rainier on weekends with friends
 #### Objects and Behaviors:
 
 **Driver**
-	*data*: name, phoneNumber, email, address, driveLicense, creditCard, destination, friendsList, passWord
-	*behaviors*: openWeb, signUpWeb, signInWeb, pickCarOnline, getCar, pickUpPassenger, drive, move, useCreditCard
+&emsp;*data*: name, phoneNumber, email, address, driveLicense, creditCard, destination, friendsList, passWord
+&emsp;*behaviors*: openWeb, signUpWeb, signInWeb, pickCarOnline, getCar, pickUpPassenger, drive, move, useCreditCard
 
 **ReachNow**
-	*data*: url, userData, carList, confirmMsg, emplyee,    
-	*behavior*: verifyUser, updateUserData, buildMsg, sendMsg, sendEmplyee
+&emsp;*data*: url, userData, carList, confirmMsg, emplyee,    
+&emsp;*behavior*: verifyUser, updateUserData, buildMsg, sendMsg, sendEmplyee
 
 **Phone**
-	*data*: dataTraffic
-	*behavior*:  receiveMsg, sendMsg, setNavigation
+&emsp;*data*: dataTraffic
+&emsp;*behavior*:  receiveMsg, sendMsg, setNavigation
 
 **CreditCard**
-	*data*: holderName, cardNumber, CVV, signature, expirationDate
-	*behavior*: transaction
+&emsp;*data*: holderName, cardNumber, CVV, signature, expirationDate
+&emsp;*behavior*: transaction
 
 **GoogleMap**
-	*data*: starting, destination, GPSData
-	*behavior*: locateNow, search, navigate
+&emsp;*data*: starting, destination, GPSData
+&emsp;*behavior*: locateNow, search, navigate
 
 #### Sequence of Flow: 
 
@@ -164,16 +165,16 @@
 ### 1.5 Book a hotel or check in the hotel
 #### Objects and Behaviors:
 
-	**Hotel**
-		*data*: rooms, location, visitorData
-		*behavior*: checkRoom, updateRoom, charge, giveKey
+**Hotel**
+	*data*: rooms, location, visitorData
+	*behavior*: checkRoom, updateRoom, charge, giveKey
 
-	**Room**
-		*data*: type, size, price, availability
+**Room**
+	*data*: type, size, price, availability
 
-	**Visitor**
-		*data*: name, phoneNumber, gender, roomChosen
-		*behavior*: checkIn, chooseRoom, checkOut, live, cancelRoom, pay, returnKey 
+**Visitor**
+	*data*: name, phoneNumber, gender, roomChosen
+	*behavior*: checkIn, chooseRoom, checkOut, live, cancelRoom, pay, returnKey 
 
 
 
