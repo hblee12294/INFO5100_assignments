@@ -1,7 +1,6 @@
 
 # Homework
 
-***
 ## 1. Hiking
 ### 1.1 Rent a ReachNow to drive to mountain rainier on weekends with friends
 #### Objects and Behaviors:
@@ -13,21 +12,28 @@
 
 &emsp;*behaviors*: openWeb, signUpWeb, signInWeb, pickCarOnline, getCar, pickUpPassenger, drive, move, useCreditCard
 
-
 **ReachNow**
-&emsp;*data*: url, userData, carList, confirmMsg, emplyee,    
+
+&emsp;*data*: url, userData, carList, confirmMsg, emplyee
+
 &emsp;*behavior*: verifyUser, updateUserData, buildMsg, sendMsg, sendEmplyee
 
 **Phone**
+
 &emsp;*data*: dataTraffic
+
 &emsp;*behavior*:  receiveMsg, sendMsg, setNavigation
 
 **CreditCard**
+
 &emsp;*data*: holderName, cardNumber, CVV, signature, expirationDate
+
 &emsp;*behavior*: transaction
 
 **GoogleMap**
+
 &emsp;*data*: starting, destination, GPSData
+
 &emsp;*behavior*: locateNow, search, navigate
 
 #### Sequence of Flow: 
@@ -65,14 +71,18 @@
 #### Objects and Behaviors:
 
 **GasStation**
-	*data*: gases, location
-	*behavior*: fillGas, charge
+
+&emsp;*data*: gases, location
+
+&emsp;*behavior*: fillGas, charge
 
 **Gas**
-	*data*: price, level, usage
+
+&emsp;*data*: price, level, usage
 
 **User**
-	*behavior*: pay, chooseGas
+
+&emsp;*behavior*: pay, chooseGas
 
 #### Sequence of Flow: 
 
@@ -97,12 +107,16 @@
 #### Objects and Behaviors:
 
 **Restaurant**
-	*data*: name, location, menu, food
-	*behavior*: serveFood, charge
+
+&emsp;*data*: name, location, menu, food
+
+&emsp;*behavior*: serveFood, charge
 
 **Customer**
-	*data*: foodChosen
-	*behavior*: order, getFood, checkout, eat 
+
+&emsp;*data*: foodChosen
+
+&emsp;*behavior*: order, getFood, checkout, eat 
 
 #### Sequence of Flow: 
 
@@ -126,19 +140,26 @@
 #### Objects and Behaviors:
 
 **TicketHouse**
-	*data*: tickets, stock
-	*behavior*: charge, checkStock, giveTicket
+
+&emsp;*data*: tickets, stock
+
+&emsp;*behavior*: charge, checkStock, giveTicket
 
 **Tourist**
-	*data*: name, friendsList, tickets
-	*behavior*: pay, buyTicket , getTicket, enterPark
+
+&emsp;*data*: name, friendsList, tickets
+
+&emsp;*behavior*: pay, buyTicket , getTicket, enterPark
 
 **Ticket**
-	*data*: price, status
+
+&emsp;*data*: price, status
 
 **Gate**
-	*data*: ticketsData
-	*behavior*: verifyTickets
+
+&emsp;*data*: ticketsData
+
+&emsp;*behavior*: verifyTickets
 
 #### Sequence of Flow: 
 
@@ -170,15 +191,20 @@
 #### Objects and Behaviors:
 
 **Hotel**
-	*data*: rooms, location, visitorData
-	*behavior*: checkRoom, updateRoom, charge, giveKey
+
+&emsp;*data*: rooms, location, visitorData
+
+&emsp;*behavior*: checkRoom, updateRoom, charge, giveKey
 
 **Room**
-	*data*: type, size, price, availability
+
+&emsp;*data*: type, size, price, availability
 
 **Visitor**
-	*data*: name, phoneNumber, gender, roomChosen
-	*behavior*: checkIn, chooseRoom, checkOut, live, cancelRoom, pay, returnKey 
+
+&emsp;*data*: name, phoneNumber, gender, roomChosen
+
+&emsp;*behavior*: checkIn, chooseRoom, checkOut, live, cancelRoom, pay, returnKey 
 
 
 
@@ -215,13 +241,80 @@
 ## 2. Organise a career fair(Suppose you are the organiser)
 #### Objects and Behaviors:
 
-**Organiser**
-	*data*:
-	*behavior*:
+**Organizer**
+
+&emsp;*data*: name, purpose, budget, initCompanyList,companyList, studentList
+
+&emsp;*behavior*: schemeCareerFair, propaganda, layoutSite, inviteCompany, updateCompany, getApplication, updateStudent, finish
+
+**CareerFair**
+
+&emsp;*data*: startTime, endTime, location
+
+
+**Company**
+
+&emsp;*data*: name, positions, join
+
+&emsp;*behavior*: giveInterview, introduce, updateCandidate ,getCV, 
+
+**Position**
+
+&emsp;*data*: name, candidateList, description
+
+**Student**
+
+&emsp;*data*: name, gender, photo, phoneNumber, school, email, GPA, CV, targetCompany, registerForm
+
+&emsp;*behavior*: register, makeCV, sendCV, takeInterview, updateTargetCompany, 
 
 #### Sequence of Flow:
 
+	Organizer organizer
+	CareerFair careerFair
+	Company initCompanyList
 
+	careerFair = orgaizer.schemeCareerFair(careerFair, initCompanyList)
+
+	for compy in initCompanyList
+		organizer.inviteCompany(compy)
+
+		if compy.join is true
+			organizer.updateCompany -> compy
+		end
+	end
+
+	organizer.propaganda -> companyList
+
+	Student stds[]
+	for std in stds
+		std.register -> name, gender, photo, phoneNumber, school, email : registerForm
+		organizer.getApplication -> registerForm
+		organizer.updateStudent
+	end 
+
+	organizer.layoutSite(careerFair)
+
+	Time currentDay
+	while currentDay > careerFair.startTime && currentDay < careerFair.endTime
+		for std in stds
+			for tCompy in targetCompany
+				std.sendCV -> tCompy
+				std.updateTargetCompany -> tCompy
+			end
+		end
+
+		for compy in organizer.companyList
+			for candidate in compy.postions.candidateList
+				candidate.takeInterview
+				compy.giveInterview -> candidate : feedback
+				compy.updateCandidate -> candidateList, feedback
+			end
+	end
+
+	organizer.finish
+
+***
 ## 3. Order Pizza from Pizza Hut
 
 ## 4. Design a code sharing platform (eg: Github).
