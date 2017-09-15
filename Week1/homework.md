@@ -316,7 +316,158 @@
 
 ***
 ## 3. Order Pizza from Pizza Hut
+#### Objects and Behaviors:
 
+**Restaurant**
+
+&emsp;*data*: name, location, employees, menu
+
+&emsp;*behavior*: getOrder, makePizza, servePizza, charge
+
+**Pizza**
+
+&emsp;*data*: price, ingredients, weight, size
+
+**Customer**
+
+&emsp;*data*: orderNumber
+
+&emsp;*behavior*: orderPizza, addIngredient, checkout, eatPizza
+
+**CreditCard**
+
+&emsp;*data*: holderName, cardNumber, CVV, signature, expirationDate
+
+&emsp;*behavior*: transaction
+
+#### Sequence of Flow:
+
+	Restaurant pizzaHut
+	Customer lee
+	CreditCard card
+
+	while true
+		lee.orderPizza -> menu : order
+		order = lee.addIngredient(order)
+		pizzaHut.getOrder -> order : orderStatus
+		if orderStatus is true
+			pizzaHut.makePizza
+			pizzaHut.servePizza
+			break
+		else
+			"The pizza you ordered has been sold out, sorry."
+		end
+	end
+
+	lee.eatPizza
+
+	pizzaHut.charge -> order : bill
+	lee.checkout -> bill, card : receipt
+
+***
 ## 4. Design a code sharing platform (eg: Github).
+#### Objects and Behaviors:
 
+**GitHub**
+
+&emsp;*data*: code
+
+&emsp;*behavior*:
+
+**Website**
+
+&emsp;*data*: url, 
+
+&emsp;*behavior*:
+
+**User**
+
+&emsp;*data*: code 
+
+&emsp;*behavior*:
+
+
+#### Sequence of Flow:
+
+
+
+
+***
 ## 5. Design a soft-drink/snacks vending machine.
+#### Objects and Behaviors:
+
+**VendingMachine**
+
+&emsp;*data*: drinks, snacks, supplierList, location, paymentInfo
+
+&emsp;*behavior*: checkStock, stockAlert, updateStock, updateAmount, sendMsfToSupplier, showAmount, chargeProcess, cancel, pourItems
+
+**Customer**
+
+&emsp;*data*: drinkChosen, snackChosen
+
+&emsp;*behavior*: pushButton, payWithCard, payWithPayPal, payWithCash, pushCancel, pushConfirm 
+
+**Supplier**
+
+&emsp;*data*: supplyList, VendingMachineLocations
+
+&emsp;*behavior*: receiveMsg, locateVendingMachine, supplyItem
+
+**Drink**
+
+&emsp;*data*: name, type, stock, volume, price, supplier, id
+
+**Snack**
+
+&emsp;*data*: name, type, stock, newWeight, price, supplier, id
+
+#### Sequence of Flow:
+
+	VendingMachine venMachine
+	Customer alen
+
+	alen.chooseFood : drinkChosen, snackChosen
+	for drink in drinkChosen
+		alen.pushButton -> drink.id
+		venMachine.checkStock -> drink.id, snack.stock : stockStatus
+		if stockStatus is true
+			updateStock -> drink
+			updateAmount -> drink
+		else
+			drink.name + "sold out"
+		end
+	end
+	for snack in snackChosen
+		alen.pushButton -> snack.id
+		venMachine.checkStock -> snack.id, snack.stock : stockStatus
+		if stockStatus is true
+			updateStock -> snack
+			updateAmount -> snack
+		else
+			snack,name + "sold out"
+		end
+	end
+
+	venMachine.showAnount -> paymentInfo
+	if alen.pushConfirm is true
+		venMacine.paymentProcess -> payment = alen.payWithCash | payWithCard | payWithPayPal : paymentStatus
+	else if alen.pushCancel
+		venMachine.cancel
+		"Thanks, see you next time."
+	else
+		venMachine.cancel
+		"Time out, choose your food again."
+	end
+
+	if paymentStaus is true
+		venMachine.pourItems
+		"Thanks, enjoy!"
+	else
+		venMachine.cancel
+		"Payment failure, choose items again."
+
+
+
+
+
