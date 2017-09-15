@@ -6,9 +6,13 @@
 ### 1.1 Rent a ReachNow to drive to mountain rainier on weekends with friends
 #### Objects and Behaviors:
 
+
 **Driver**
+
 &emsp;*data*: name, phoneNumber, email, address, driveLicense, creditCard, destination, friendsList, passWord
+
 &emsp;*behaviors*: openWeb, signUpWeb, signInWeb, pickCarOnline, getCar, pickUpPassenger, drive, move, useCreditCard
+
 
 **ReachNow**
 &emsp;*data*: url, userData, carList, confirmMsg, emplyee,    
