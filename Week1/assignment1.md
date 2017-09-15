@@ -1,6 +1,5 @@
 
 # Scenarios: 
-
 1. Hiking
  	1. Rent a ReachNow to drive to mountain rainier on weekends with friends
  	2. On the way, fill the gas
