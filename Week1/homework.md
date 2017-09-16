@@ -370,27 +370,58 @@
 
 **GitHub**
 
-&emsp;*data*: code
+&emsp;*data*: url, logPage, pages, userData, accountData 
 
-&emsp;*behavior*:
+&emsp;*behavior*: signUp, signIn, logout, updateUserData, updateAccounts, 
 
-**Website**
+**Accounts**
 
-&emsp;*data*: url, 
+&emsp;*data*: holder, repositories
 
-&emsp;*behavior*:
+&emsp;*behavior*: updateRpositories
+
+**Repository**
+
+&emsp;*data*: holder, name, data, forkTimes
+
+&emsp;*behavior*:  updateData
+
 
 **User**
 
-&emsp;*data*: code 
+&emsp;*data*: name, email, passWord, codes
 
-&emsp;*behavior*:
+&emsp;*behavior*: push, pull, fork, renameRepositories
 
 
 #### Sequence of Flow:
 
+	Github gitHub
+	User lily
+	Accounts accountOfLily
+	
+	lily.signUp -> name, email, passWord, accountOfLily, gitHub : accountOfLily
 
+	while true
+		lily.signIn -> email, passWord, gitHub -> gitHub.logPage
+		if logPage is true
+			gitHub.jumpToAccountPage -> accountOfLily
+			break
+		else
+			"Your account or password is not right, try again."
 
+	lily.push -> code, repository
+	repository.updateData -> code
+
+	lily.pull -> repositoy.name
+	accountOfLily.updateRepositories
+
+	lily.folk -> accountOfJack.repository[name].name
+	accountOfLily.updateRepositories
+	accountOfJack.repository[name].forkTime++
+
+	Repository repository
+	lily.renameRepositories -> repository.name
 
 ***
 ## 5. Design a soft-drink/snacks vending machine.
