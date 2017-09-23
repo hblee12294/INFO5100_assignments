@@ -114,15 +114,92 @@ public class PerfectNumber {
 */
 
 
-
+//---------------------------------------------
 // #4
+public class Pizza {
+
+	String type;
+	double price;
+	int point;
+	int amount;
+	
+	public void init() {
+		type = "classic";
+		price = 10.0;
+		point = 10;
+		amount = 0;
+	}
+	
+	public Pizza() {
+		init();
+	}
+	
+	public Pizza(String type) {
+		init();
+		this.type = type;
+	}
+	
+	public Pizza(String type, double price) {
+		init();
+		this.type = type;
+		this.price = price;
+	}
+	
+	public Pizza(String type, double price, int point) {
+		init();
+		this.type = type;
+		this.price = price;
+		this.point = point;
+	}
+	
+}
 
 
-
+//---------------------------------------------
 // #5
+import java.util.ArrayList;
+
+public class Customer {
+
+	String name;
+	ArrayList<Pizza> pizzas;
+	
+	public Customer() {
+		name = "someone";
+		pizzas = new ArrayList<Pizza>();
+	}
+	
+	public Customer(String name) {
+		this.name = name;
+		this.pizzas = new ArrayList<Pizza>();
+	}
+		
+	// The pizzaOrdered is created in Restaurant class, then be passed to Customer class
+	public void orderPizza(Pizza pizzaOrdered, int numberOrdered) {
+		pizzas.add(pizzaOrdered);
+		pizzaOrdered.amount += numberOrdered;  // Using 'amount' in each type of pizza to record amount of pizza ordered. 
+	}
+	
+	public static void main(String[] args) {
+		
+		Customer lee = new Customer("lee");
+		Restaurant pizzaHut = new Restaurant();
+		int sum = 0;
+		
+		ArryList<Pizza> pizzaProvide = pizzaHut.providePizzaMenu();
+		lee.orderPizza(pizzaProvide.get(4), 1);   // order #4 
+		lee.orderPizza(pizzaProvide.get(3), 2);   // order #3
+
+		for (Pizza pz : lee.pizzas) {
+			sum += pz.amount * pz.price;
+		}
+		System.out.println("The sum of pizzas you ordered is " + sum);
+	}
+	
+}
 
 
-
+//---------------------------------------------
 // #6
 public class TranglePrinter {
 
