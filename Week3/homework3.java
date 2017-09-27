@@ -100,10 +100,53 @@ public class CheckVowels {
 //	ii.Should return a boolean 'true' if the inputs are Anagram else return 'false'
 //	Here is the protype you can work with.
 
-public boolean checkIfTwoStringsAreAnagrams(String s1, String s2) {
-
-
-}	
+public class CheckAnagrams {
+	int[] alphabet;       // A ~ Z and a ~ z in ASCII from #65-122
+	
+	public boolean checkIfTwoStringsAreAnagrams(String s1, String s2) {
+		alphabet = new int[57];
+		
+		if (s1.equals(s2))
+			return true;
+		
+		for (int i = 0; i < s1.length(); ++i) {
+			++alphabet[s1.charAt(i) - 'A'];
+		}
+		
+		for (int j = 0; j < s2.length(); ++j) {
+			--alphabet[s2.charAt(j) - 'A'];
+		}
+		
+		for (int k = 0; k < alphabet.length; ++k) {
+			if (alphabet[k] != 0)
+				return false;
+		}
+		
+		return true;
+	}
+	
+	/* Test
+	public static void main(String[] args) {
+		CheckAnagrams check = new CheckAnagrams();
+		boolean result;
+		
+		String str1 = "abcdefg";
+		String str2 = "gfedcba";
+		result = check.checkIfTwoStringsAreAnagrams(str1, str2);
+		System.out.println(str1 + " & " + str2 + ": " + result); 
+		
+		String str3 = "Elva";
+		String str4 = "Leav";
+		result = check.checkIfTwoStringsAreAnagrams(str3, str4);
+		System.out.println(str3 + " & " + str4 + ": " + result); 
+		
+		String str5 = "Utoo";
+		String str6 = "tooU";
+		result = check.checkIfTwoStringsAreAnagrams(str5, str6);
+		System.out.println(str5 + " & " + str6 + ": " + result); 
+	}
+	*/
+}
 
 // ----------------------------------------------------------------------------------
 //5.Create a calculator that can perform the following featrues.
@@ -183,6 +226,7 @@ public class Calculator {
 		return roots;
 	}
 	
+	/*
 	public static void main(String[] args) {
 		Calculator cal = new Calculator();
 		double result = 0;
@@ -223,4 +267,5 @@ public class Calculator {
 		double[] rootsResult = cal.quadraticEquation(2, 8, 6);
 		System.out.println("x1 = " + rootsResult[0] + "; x2 = " + rootsResult[1]);
 	}
+	*/
 }
