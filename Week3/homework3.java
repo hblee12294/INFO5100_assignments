@@ -101,20 +101,22 @@ public class CheckVowels {
 //	Here is the protype you can work with.
 
 public class CheckAnagrams {
-	int[] alphabet;       // A ~ Z and a ~ z in ASCII from #65-122
-	
+//	int[] alphabet;       // A ~ Z and a ~ z in ASCII from #65-122
+	int[] alphabet;		  // It's actually all the characters in ASCII
+
 	public boolean checkIfTwoStringsAreAnagrams(String s1, String s2) {
-		alphabet = new int[57];
+//		alphabet = new int[57];
+		alphabet = new int[127];	// All ASCII characters from #0 ~ #126 
 		
 		if (s1.equals(s2))
 			return true;
 		
 		for (int i = 0; i < s1.length(); ++i) {
-			++alphabet[s1.charAt(i) - 'A'];
+			++alphabet[s1.charAt(i) - ' '];        // The first character is ' '(space)
 		}
 		
 		for (int j = 0; j < s2.length(); ++j) {
-			--alphabet[s2.charAt(j) - 'A'];
+			--alphabet[s2.charAt(j) - ' '];
 		}
 		
 		for (int k = 0; k < alphabet.length; ++k) {
@@ -144,6 +146,11 @@ public class CheckAnagrams {
 		String str6 = "tooU";
 		result = check.checkIfTwoStringsAreAnagrams(str5, str6);
 		System.out.println(str5 + " & " + str6 + ": " + result); 
+
+		String str7 = "U t oo%#";
+		String str8 = " t %#ooU";
+		result = check.checkIfTwoStringsAreAnagrams(str7, str8);
+		System.out.println(str7 + " & " + str8 + ": " + result); 
 	}
 	*/
 }
