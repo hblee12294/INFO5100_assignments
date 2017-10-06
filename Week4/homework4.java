@@ -299,6 +299,7 @@ public class Student {
 	public int getId() {
 		return id;
 	}
+
 }
 
 // ----------- Course -----------
@@ -371,12 +372,123 @@ public class Course {
 }
 
 
-
 //5.Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
+public class RomanNumConversion {
+	static String dig[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+	static String ten[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+	static String hdd[] = {"", "C", "CC", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+	static String tsd[] = {"", "M", "MM", "MMM"};
+	
+	public String converse(int num) {
+		String output = "";
+		return output + tsd[num / 1000] + hdd[num % 1000 / 100] + ten[num % 100 / 10] + dig[num % 10];
+	}
 
+	// Test
+	public static void main(String[] args) {
+		RomanNumConversion rnc = new RomanNumConversion();
+		
+		int n1 = 1;
+		int n2 = 174;
+		int n3 = 859;
+		int n4 = 2842;
+		int n5 = 3999;
+		
+		System.out.println(rnc.converse(n1));
+		System.out.println(rnc.converse(n2));
+		System.out.println(rnc.converse(n3));
+		System.out.println(rnc.converse(n4));
+		System.out.println(rnc.converse(n5));
+	}
+}
 
 
 
 /*6.There are two sorted arrays nums1 and nums2 of size m and n respectively.
 	Find the median of the two sorted arrays. 
 */
+public class FindMedian {
+	
+	// Merge two array
+	public int[] mergeArray(int[] num1, int num2[]) {
+		int len1 = num1.length;
+		int len2 = num2.length;
+		int[] mergeNum = new int[len1+len2];
+		
+		int cnt1 = 0;
+		int cnt2 = 0;
+		while (true) {
+			if (cnt1 == len1 && cnt2 == len2) {
+				break;
+			}
+			else if (cnt1 == len1) {				// Array num2 to the end
+				while (true) {
+					if (cnt2 == len2) break;
+					mergeNum[cnt1+cnt2] = num2[cnt2];
+					++cnt2;
+				}
+			 }
+			else if (cnt2 == len2) {				// Arraynum2 to the end
+				while (true) {
+					if (cnt1 == len1) break;
+					mergeNum[cnt1+cnt2] = num1[cnt1];
+					++cnt1;
+				}
+			}
+			else {
+				if (num1[cnt1] < num2[cnt2]) {
+					mergeNum[cnt1+cnt2] = num1[cnt1];
+					++cnt1;
+				}
+				else {
+					mergeNum[cnt1+cnt2] = num2[cnt2];
+					++cnt2;
+				}
+			}
+		}
+		return mergeNum;
+	}
+	
+	// Get median with one parameter
+	public double getMedian(int[] num) {
+		int len = num.length;
+		double median = -1;
+		
+		if (len % 2 == 1) {
+			median = num[len/2];
+		}
+		else {
+			median = (num[len/2] + num[len/2-1]) / 2.0;
+		}
+		return median;
+	}
+
+	// Get median with two parameter
+	public double getMedian(int[] num1, int[] num2) {
+		int[] newNum = mergeArray(num1, num2);
+		
+		for (int i = 0; i < newNum.length; ++i)
+			System.out.print(newNum[i] + " ");
+		
+		return getMedian(newNum);
+		
+	}
+	
+	/* Test
+	public static void main(String args[]) {
+		FindMedian fm = new FindMedian();
+		
+		int[] n1 = {1, 3};
+		int[] n2 = {2};
+		System.out.println(": Median = " + fm.getMedian(n1,n2));
+		
+		int[] n3 = {3, 6, 11, 63};
+		int[] n4 = {4, 24, 35, 98};
+		System.out.println(": Median = " + fm.getMedian(n3,n4));
+		
+		int[] n5 = {7, 9, 10};
+		int[] n6 = {23, 45};
+		System.out.println(": Median = " + fm.getMedian(n5, n6));
+	}
+	*/
+}
