@@ -418,7 +418,7 @@ public class FindMedian {
 		int cnt1 = 0;
 		int cnt2 = 0;
 		while (true) {
-			if (cnt1 == len1 && cnt2 == len2) {
+			if (cnt1 == len1 && cnt2 == len2) {		// 
 				break;
 			}
 			else if (cnt1 == len1) {				// Array num2 to the end
@@ -428,7 +428,7 @@ public class FindMedian {
 					++cnt2;
 				}
 			 }
-			else if (cnt2 == len2) {				// Arraynum2 to the end
+			else if (cnt2 == len2) {				// Array num2 to the end
 				while (true) {
 					if (cnt1 == len1) break;
 					mergeNum[cnt1+cnt2] = num1[cnt1];
