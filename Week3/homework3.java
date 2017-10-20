@@ -20,7 +20,7 @@ public class Book {
 	public Book(int price) {    // The type of argument 'price' is also 'int'
 		this.price = price;
 	}
-
+        // Missing return type (-0.5)
 	public setName(String name) {
 		return name;
 	}
@@ -106,12 +106,15 @@ public class CheckAnagrams {
 
 	public boolean checkIfTwoStringsAreAnagrams(String s1, String s2) {
 //		alphabet = new int[57];
+		// Generally speaking, if we consider all characters we initialize new int[128]
+		// If you only want to consider alphabet, we only need 56 space
 		alphabet = new int[127];	// All ASCII characters from #0 ~ #126 
 		
 		if (s1.equals(s2))
 			return true;
 		
 		for (int i = 0; i < s1.length(); ++i) {
+			// No need to substract space, since those spaces are already used.
 			++alphabet[s1.charAt(i) - ' '];        // The first character is ' '(space)
 		}
 		
@@ -220,9 +223,11 @@ public class Calculator {
 		
 		if (delta < 0) {
 			System.out.println("The quation has no real roots.");
+			// You should return null here, otherwise you will return {0, 0}
 		} 
 		else if (delta == 0) {
 			roots[0] = (-b + Math.sqrt(delta)) / (2 * a);
+			// It's better to return new int[] {roots[0]};
 			roots[1] = roots[0];
 		}
 		else {
