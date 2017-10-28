@@ -21,7 +21,7 @@ public class Extra {
 		find(maze, 0, 0, maze.length - 1, maze[0].length - 1);
 		return result;
 	}
-	
+	// No need to pass endX and endY since you can get the info from maze
 	public boolean find(int maze[][], int x, int y, int endX, int endY) {
 		if (x == endX && y == endY) {
 			result.add(new Cell(x, y));
