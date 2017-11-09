@@ -203,6 +203,7 @@ public class HangmanGame {
 				break;
 			}
 			if (missNumber == 8) {
+				// Typo out
 				System.out.println("Oops, you are running our of chances. ---- Game over.");
 				break;
 			}
