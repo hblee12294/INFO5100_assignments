@@ -40,4 +40,4 @@ public class Partition {
 		System.out.println(pt.findPartition(array3));
 		System.out.println(pt.findPartition(array4));
 	}
-}
+} 
